@@ -9,6 +9,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import ua.tonkoshkur.tennis.match.MatchDto;
 import ua.tonkoshkur.tennis.match.ongoing.OngoingMatchesService;
+import ua.tonkoshkur.tennis.match.ongoing.UpdateScoreRequest;
+import ua.tonkoshkur.tennis.match.ongoing.UpdateScoreRequestMapper;
 
 import java.io.IOException;
 
@@ -17,14 +19,16 @@ public class MatchScoreController extends HttpServlet {
 
     private static final String MATCH_SCORE_PAGE = "jsp/match-score.jsp";
 
-    private transient MatchScoreRequestMapper matchScoreRequestMapper;
     private transient OngoingMatchesService ongoingMatchesService;
+    private transient MatchScoreRequestMapper matchScoreRequestMapper;
+    private transient UpdateScoreRequestMapper updateScoreRequestMapper;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         ServletContext context = config.getServletContext();
         ongoingMatchesService = (OngoingMatchesService) context.getAttribute(OngoingMatchesService.class.getSimpleName());
         matchScoreRequestMapper = new MatchScoreRequestMapper();
+        updateScoreRequestMapper = new UpdateScoreRequestMapper();
     }
 
     @Override
@@ -33,6 +37,19 @@ public class MatchScoreController extends HttpServlet {
         MatchScoreRequest scoreRequest = matchScoreRequestMapper.map(request);
 
         MatchDto match = ongoingMatchesService.findByUuidOrThrow(scoreRequest.uuid());
+
+        request.setAttribute("match", match);
+
+        request.getRequestDispatcher(MATCH_SCORE_PAGE)
+                .forward(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        UpdateScoreRequest updateScoreRequest = updateScoreRequestMapper.map(request);
+
+        MatchDto match = ongoingMatchesService.updateScore(updateScoreRequest.uuid(), updateScoreRequest.winnerId());
 
         request.setAttribute("match", match);
 
