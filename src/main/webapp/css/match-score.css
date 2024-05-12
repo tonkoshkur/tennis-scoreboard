@@ -1,0 +1,37 @@
+:root {
+    --scoreboard-background-color: var(--primary-color);
+    --scoreboard-player-name-background-color: #FBBC02;
+}
+
+.scoreboard {
+    align-items: center;
+    background-color: var(--scoreboard-background-color);
+    border-radius: 10px;
+    color: white;
+    display: grid;
+    gap: 5px;
+    grid-template-columns: minmax(190px, 15vw) repeat(4, 50px);
+    grid-template-rows: 25px repeat(2, 50px);
+    justify-items: center;
+}
+
+.scoreboard > *:nth-child(n + 6) {
+    border: 2px solid #fff;
+    border-radius: 5px;
+    font-size: 24px;
+    padding: 5px 10px;
+}
+
+.scoreboard > div.player-name {
+    align-content: center;
+    align-self: stretch;
+    background-color: var(--scoreboard-player-name-background-color);
+    border-width: 0;
+    color: black;
+    font-size: 16px;
+    justify-self: stretch;
+    margin: 5px;
+    overflow-wrap: break-word;
+    text-align: center;
+    word-break: break-word;
+}
