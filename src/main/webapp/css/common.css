@@ -5,6 +5,7 @@
     --button-color: var(--primary-color);
     --button-hover-color: #2E7D32;
     --table-header-background-color: var(--primary-color);
+    --error-color: #D32F2F;
 }
 
 * {
@@ -32,6 +33,20 @@ button:hover {
     background-color: var(--button-hover-color);
 }
 
+input[type=text],
+input[type=search] {
+    padding: 10px;
+    margin: 10px 0;
+    display: inline-block;
+    border: 1px solid var(--input-border-color);
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=text].full-width {
+    width: 100%;
+}
+
 .content {
     display: flex;
     flex-direction: column;
@@ -46,4 +61,12 @@ button:hover {
 
 .content.horizontal-center {
     align-items: center;
+}
+
+.content > .horizontal-center {
+    align-self: center;
+}
+
+.error {
+    color: var(--error-color);
 }
