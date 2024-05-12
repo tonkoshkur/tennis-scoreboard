@@ -1,4 +1,4 @@
-package ua.tonkoshkur.tennis.match;
+package ua.tonkoshkur.tennis.match.newmatch;
 
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletContext;
