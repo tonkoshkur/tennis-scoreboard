@@ -7,6 +7,8 @@ import org.modelmapper.ModelMapper;
 import ua.tonkoshkur.tennis.match.Match;
 import ua.tonkoshkur.tennis.match.ongoing.OngoingMatchesService;
 import ua.tonkoshkur.tennis.match.ongoing.OngoingMatchesServiceImpl;
+import ua.tonkoshkur.tennis.match.score.MatchScoreCalculationService;
+import ua.tonkoshkur.tennis.match.score.MatchScoreCalculationServiceImpl;
 import ua.tonkoshkur.tennis.player.*;
 
 @Getter
@@ -19,6 +21,7 @@ public final class ComponentFactory {
     private final PlayerMapper playerMapper;
     private final PlayerService playerService;
 
+    private final MatchScoreCalculationService matchScoreCalculationService;
     private final OngoingMatchesService ongoingMatchesService;
 
 
@@ -30,7 +33,8 @@ public final class ComponentFactory {
         playerMapper = new PlayerMapper(modelMapper);
         playerService = new PlayerServiceImpl(playerDao, playerMapper);
 
-        ongoingMatchesService = new OngoingMatchesServiceImpl();
+        matchScoreCalculationService = new MatchScoreCalculationServiceImpl();
+        ongoingMatchesService = new OngoingMatchesServiceImpl(matchScoreCalculationService);
     }
 
     private SessionFactory createSessionFactory() {
