@@ -3,6 +3,7 @@ package ua.tonkoshkur.tennis.match.ongoing;
 import lombok.RequiredArgsConstructor;
 import ua.tonkoshkur.tennis.common.exception.NotFoundException;
 import ua.tonkoshkur.tennis.match.MatchDto;
+import ua.tonkoshkur.tennis.match.finished.FinishedMatchesService;
 import ua.tonkoshkur.tennis.match.score.MatchScoreCalculationService;
 import ua.tonkoshkur.tennis.player.PlayerDto;
 
@@ -15,6 +16,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class OngoingMatchesServiceImpl implements OngoingMatchesService {
 
     private final MatchScoreCalculationService matchScoreCalculationService;
+    private final FinishedMatchesService finishedMatchesService;
 
     private final Map<UUID, MatchDto> matchMap = new ConcurrentHashMap<>();
 
@@ -46,7 +48,7 @@ public class OngoingMatchesServiceImpl implements OngoingMatchesService {
 
         if (updatedMatch.isFinished()) {
             deleteByUuid(matchUuid);
-            //TODO save match to db
+            finishedMatchesService.save(match);
         }
 
         return updatedMatch;

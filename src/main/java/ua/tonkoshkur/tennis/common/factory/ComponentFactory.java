@@ -5,6 +5,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.modelmapper.ModelMapper;
 import ua.tonkoshkur.tennis.match.Match;
+import ua.tonkoshkur.tennis.match.MatchDao;
+import ua.tonkoshkur.tennis.match.MatchDaoImpl;
+import ua.tonkoshkur.tennis.match.MatchMapper;
+import ua.tonkoshkur.tennis.match.finished.FinishedMatchesService;
+import ua.tonkoshkur.tennis.match.finished.FinishedMatchesServiceImpl;
 import ua.tonkoshkur.tennis.match.ongoing.OngoingMatchesService;
 import ua.tonkoshkur.tennis.match.ongoing.OngoingMatchesServiceImpl;
 import ua.tonkoshkur.tennis.match.score.MatchScoreCalculationService;
@@ -21,6 +26,9 @@ public final class ComponentFactory {
     private final PlayerMapper playerMapper;
     private final PlayerService playerService;
 
+    private final MatchDao matchDao;
+    private final MatchMapper matchMapper;
+    private final FinishedMatchesService finishedMatchesService;
     private final MatchScoreCalculationService matchScoreCalculationService;
     private final OngoingMatchesService ongoingMatchesService;
 
@@ -33,8 +41,11 @@ public final class ComponentFactory {
         playerMapper = new PlayerMapper(modelMapper);
         playerService = new PlayerServiceImpl(playerDao, playerMapper);
 
+        matchDao = new MatchDaoImpl(sessionFactory);
+        matchMapper = new MatchMapper(modelMapper);
+        finishedMatchesService = new FinishedMatchesServiceImpl(matchDao, matchMapper);
         matchScoreCalculationService = new MatchScoreCalculationServiceImpl();
-        ongoingMatchesService = new OngoingMatchesServiceImpl(matchScoreCalculationService);
+        ongoingMatchesService = new OngoingMatchesServiceImpl(matchScoreCalculationService, finishedMatchesService);
     }
 
     private SessionFactory createSessionFactory() {

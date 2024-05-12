@@ -6,6 +6,7 @@ import jakarta.servlet.ServletContextListener;
 import jakarta.servlet.annotation.WebListener;
 import org.hibernate.SessionFactory;
 import ua.tonkoshkur.tennis.common.factory.ComponentFactory;
+import ua.tonkoshkur.tennis.match.finished.FinishedMatchesService;
 import ua.tonkoshkur.tennis.match.ongoing.OngoingMatchesService;
 import ua.tonkoshkur.tennis.player.PlayerService;
 
@@ -22,6 +23,7 @@ public class ServletContextListenerImpl implements ServletContextListener {
         context.setAttribute(SessionFactory.class.getSimpleName(), factory.getSessionFactory());
         context.setAttribute(PlayerService.class.getSimpleName(), factory.getPlayerService());
         context.setAttribute(OngoingMatchesService.class.getSimpleName(), factory.getOngoingMatchesService());
+        context.setAttribute(FinishedMatchesService.class.getSimpleName(), factory.getFinishedMatchesService());
     }
 
     @Override
