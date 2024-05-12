@@ -1,0 +1,26 @@
+insert into Players values (default, 'Robert Abdesselam');
+insert into Players values (default, 'Andre Agassi');
+insert into Players values (default, 'Juan Aguilera');
+insert into Players values (default, 'Betsy Abbas');
+insert into Players values (default, 'Sabine Appelmans');
+
+insert into Matches values (default, 1, 2, 1);
+insert into Matches values (default, 1, 3, 3);
+insert into Matches values (default, 1, 4, 1);
+insert into Matches values (default, 1, 5, 5);
+insert into Matches values (default, 2, 1, 2);
+insert into Matches values (default, 2, 3, 3);
+insert into Matches values (default, 2, 4, 2);
+insert into Matches values (default, 2, 5, 5);
+insert into Matches values (default, 3, 1, 1);
+insert into Matches values (default, 3, 2, 2);
+insert into Matches values (default, 3, 4, 3);
+insert into Matches values (default, 3, 5, 5);
+insert into Matches values (default, 4, 1, 4);
+insert into Matches values (default, 4, 2, 4);
+insert into Matches values (default, 4, 3, 4);
+insert into Matches values (default, 4, 5, 5);
+insert into Matches values (default, 5, 1, 1);
+insert into Matches values (default, 5, 2, 2);
+insert into Matches values (default, 5, 3, 3);
+insert into Matches values (default, 5, 4, 4);
