@@ -6,6 +6,7 @@
     <title>Match score</title>
     <link rel="stylesheet" type="text/css" href="../css/common.css">
     <link rel="stylesheet" type="text/css" href="../css/matches.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 <div class="content horizontal-center">
@@ -31,13 +32,21 @@
         <tr>
             <th>Player 1</th>
             <th>Player 2</th>
-            <th>Winner</th>
         </tr>
         <c:forEach var="match" items="${matchesPage.content}">
             <tr>
-                <td><c:out value="${match.player1.name}"/></td>
-                <td><c:out value="${match.player2.name}"/></td>
-                <td><c:out value="${match.winner.name}"/></td>
+                <td>
+                    <c:out value="${match.player1.name}"/>
+                    <c:if test="${match.player1.name == match.winner.name}">
+                        <i class="fa fa-trophy fa-lg fa-align-right" aria-hidden="true"></i>
+                    </c:if>
+                </td>
+                <td>
+                    <c:out value="${match.player2.name}"/>
+                    <c:if test="${match.player2.name == match.winner.name}">
+                        <i class="fa fa-trophy fa-lg fa-align-right" aria-hidden="true"></i>
+                    </c:if>
+                </td>
             </tr>
         </c:forEach>
     </table>

@@ -6,9 +6,9 @@
 
 table {
     border-collapse: collapse;
-    min-width: 500px;
+    min-width: 250px;
     table-layout: fixed;
-    width: 50%;
+    width: 30%;
 }
 
 th, td {
