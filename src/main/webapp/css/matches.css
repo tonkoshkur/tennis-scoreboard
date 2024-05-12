@@ -1,0 +1,24 @@
+:root {
+    --table-border-color: #ccc;
+    --table-header-background-color: var(--primary-color);
+    --table-header-color: white;
+}
+
+table {
+    border-collapse: collapse;
+    min-width: 500px;
+    table-layout: fixed;
+    width: 50%;
+}
+
+th, td {
+    border: 1px solid var(--table-border-color);
+    overflow-wrap: break-word;
+    padding: 10px;
+    word-break: break-word;
+}
+
+th {
+    background-color: var(--table-header-background-color);
+    color: var(--table-header-color);
+}

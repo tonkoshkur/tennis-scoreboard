@@ -4,7 +4,6 @@
     --button-color: var(--primary-color);
     --error-color: #D32F2F;
     --primary-color: #1B5E20;
-    --table-header-background-color: var(--primary-color);
     --button-hover-color: #2E7D32;
 }
 
@@ -47,6 +46,12 @@ input[type=text].full-width {
     width: 100%;
 }
 
+input[type=submit].active,
+button.active {
+    color: var(--primary-color);
+    background-color: white;
+}
+
 .content {
     display: flex;
     flex-direction: column;
@@ -86,4 +91,8 @@ input[type=text].full-width {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+}
+
+.m-10 {
+    margin: 10px !important;
 }

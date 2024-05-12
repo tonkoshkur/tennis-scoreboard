@@ -20,6 +20,15 @@ public interface RequestMapper<T> {
                 .orElseThrow(() -> new BadRequestException(String.format("Invalid %s value", name)));
     }
 
+    default <R> R mapParamOrDefault(HttpServletRequest request, String name, Function<String, R> mapper, R defaultValue) {
+        String value = request.getParameter(name);
+        if (value == null) {
+            return defaultValue;
+        }
+        return mapParamValue(value, mapper)
+                .orElse(defaultValue);
+    }
+
     private <R> Optional<R> mapParamValue(String value, Function<String, R> mapper) {
         try {
             R result = mapper.apply(value);
