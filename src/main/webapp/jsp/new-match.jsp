@@ -20,6 +20,7 @@
                    name="player1"
                    type="text"
                    maxlength="25"
+                   value="${param.player1}"
                    autofocus
                    required/>
         </div>
@@ -30,8 +31,10 @@
                    name="player2"
                    type="text"
                    maxlength="25"
+                   value="${param.player2}"
                    required/>
         </div>
+        <div class="error">${error}</div>
         <input class="horizontal-center"
                type="submit"
                value="Start"/>
