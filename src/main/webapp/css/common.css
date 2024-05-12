@@ -1,0 +1,49 @@
+:root {
+    --primary-color: #1B5E20;
+    --background-color: #E8F5E9;
+    --input-border-color: var(--primary-color);
+    --button-color: var(--primary-color);
+    --button-hover-color: #2E7D32;
+    --table-header-background-color: var(--primary-color);
+}
+
+* {
+    font-family: "Apple SD Gothic Neo", serif;
+}
+
+body {
+    background-color: var(--background-color);
+}
+
+input[type=submit],
+button {
+    cursor: pointer;
+    font-size: 1.1em;
+    border: 1px solid var(--input-border-color);
+    border-radius: 4px;
+    padding: 10px 15px;
+    margin: 5px;
+    color: white;
+    background-color: var(--button-color);
+}
+
+input[type=submit]:hover,
+button:hover {
+    background-color: var(--button-hover-color);
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 50px 0;
+}
+
+.content.vertical-center {
+    justify-content: center;
+    height: 400px;
+}
+
+.content.horizontal-center {
+    align-items: center;
+}
