@@ -4,8 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Match score</title>
-    <link rel="stylesheet" type="text/css" href="../css/common.css">
-    <link rel="stylesheet" type="text/css" href="../css/matches.css">
+    <style>
+        <%@ include file="/css/common.css" %>
+        <%@ include file="/css/matches.css" %>
+    </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>

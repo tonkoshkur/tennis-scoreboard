@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>New match</title>
-    <link rel="stylesheet" type="text/css" href="../css/common.css">
+    <style>
+        <%@ include file="/css/common.css" %>
+    </style>
 </head>
 <body>
 <div class="content horizontal-center">

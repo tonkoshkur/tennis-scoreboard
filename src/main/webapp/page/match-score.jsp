@@ -8,8 +8,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Match score</title>
-    <link rel="stylesheet" type="text/css" href="../css/common.css">
-    <link rel="stylesheet" type="text/css" href="../css/match-score.css">
+    <style>
+        <%@ include file="/css/common.css" %>
+        <%@ include file="/css/match-score.css" %>
+    </style>
 </head>
 <body>
 <div class="content horizontal-center">

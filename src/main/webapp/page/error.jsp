@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Error</title>
-    <link rel="stylesheet" type="text/css" href="../css/common.css">
+    <style>
+        <%@ include file="/css/common.css" %>
+    </style>
 </head>
 <body>
 <div class="content vertical-center horizontal-center">
