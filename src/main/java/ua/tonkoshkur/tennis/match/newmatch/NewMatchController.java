@@ -50,14 +50,16 @@ public class NewMatchController extends HttpServlet {
 
             UUID uuid = ongoingMatchesService.createForPlayers(player1, player2);
 
-            redirectToMatchScore(response, uuid);
+            redirectToMatchScore(request, response, uuid);
         } catch (BadRequestException exception) {
             handleError(request, response, exception.getMessage());
         }
     }
 
-    private void redirectToMatchScore(HttpServletResponse response, UUID uuid) throws IOException {
-        response.sendRedirect("/match-score?uuid=" + uuid);
+    private void redirectToMatchScore(HttpServletRequest request, HttpServletResponse response, UUID uuid)
+            throws IOException {
+        String url = request.getContextPath() + "/match-score?uuid=" + uuid;
+        response.sendRedirect(url);
     }
 
     private void handleError(HttpServletRequest request, HttpServletResponse response, String message)
