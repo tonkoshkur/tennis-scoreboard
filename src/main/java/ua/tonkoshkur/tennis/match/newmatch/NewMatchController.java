@@ -45,8 +45,8 @@ public class NewMatchController extends HttpServlet {
         try {
             NewMatchRequest newMatchRequest = newMatchRequestMapper.map(request);
 
-            PlayerDto player1 = playerService.findByNameOrSave(newMatchRequest.player1());
-            PlayerDto player2 = playerService.findByNameOrSave(newMatchRequest.player2());
+            PlayerDto player1 = playerService.createOrFindByName(newMatchRequest.player1());
+            PlayerDto player2 = playerService.createOrFindByName(newMatchRequest.player2());
 
             UUID uuid = ongoingMatchesService.createForPlayers(player1, player2);
 

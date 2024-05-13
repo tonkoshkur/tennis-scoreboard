@@ -2,6 +2,7 @@ package ua.tonkoshkur.tennis.player;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -10,6 +11,7 @@ import java.util.Objects;
 @Getter
 @Setter
 @ToString
+@NoArgsConstructor
 @Entity
 @Table(name = "Players")
 public class Player {
@@ -19,6 +21,10 @@ public class Player {
     private Integer id;
 
     private String name;
+
+    public Player(String name) {
+        this.name = name;
+    }
 
     @Override
     public boolean equals(Object o) {
