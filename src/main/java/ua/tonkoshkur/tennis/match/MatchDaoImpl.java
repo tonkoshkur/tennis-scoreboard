@@ -11,9 +11,9 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MatchDaoImpl extends BaseDao implements MatchDao {
 
-    private static final String PLAYER_NAME_FILTER_QUERY = "where lower(player1.name) like lower(:playerName) " +
-            "or lower(player2.name) like lower(:playerName) " +
-            "or lower(winner.name) like lower(:playerName)";
+    private static final String PLAYER_NAME_FILTER_QUERY = "where upper(player1.name) like upper(:playerName) " +
+            "or upper(player2.name) like upper(:playerName) " +
+            "or upper(winner.name) like upper(:playerName)";
 
     private final SessionFactory sessionFactory;
 

@@ -1,8 +1,8 @@
-insert into Players values (default, 'Robert Abdesselam');
-insert into Players values (default, 'Andre Agassi');
-insert into Players values (default, 'Juan Aguilera');
-insert into Players values (default, 'Betsy Abbas');
-insert into Players values (default, 'Sabine Appelmans');
+insert into Players values (default, UPPER('Robert Abdesselam'));
+insert into Players values (default, UPPER('Andre Agassi'));
+insert into Players values (default, UPPER('Juan Aguilera'));
+insert into Players values (default, UPPER('Betsy Abbas'));
+insert into Players values (default, UPPER('Sabine Appelmans'));
 
 insert into Matches values (default, 1, 2, 1);
 insert into Matches values (default, 1, 3, 3);

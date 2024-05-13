@@ -25,6 +25,9 @@ public class PlayerDaoImpl extends BaseDao implements PlayerDao {
     }
 
     private Player save(Session session, Player player) {
+        String upperCaseName = player.getName().toUpperCase();
+        player.setName(upperCaseName);
+
         executeTransactional(session, () -> session.persist(player));
         return player;
     }
@@ -35,7 +38,7 @@ public class PlayerDaoImpl extends BaseDao implements PlayerDao {
     }
 
     private Optional<Player> findByName(Session session, String name) {
-        String sql = "from Player p where p.name = :name";
+        String sql = "from Player p where upper(p.name) = upper(:name)";
 
         return session.createSelectionQuery(sql, Player.class)
                 .setParameter("name", name)
