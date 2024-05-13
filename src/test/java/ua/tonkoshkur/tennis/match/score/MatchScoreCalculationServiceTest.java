@@ -43,6 +43,17 @@ public class MatchScoreCalculationServiceTest {
     }
 
     @Test
+    void testPlayer1WinsPointsAtDeuce() {
+        Assertions.assertAll(
+                this::givenMatchWithPlayersAtDeuce_whenPlayer1WinsPoints_thenPlayer1DoesNotWinGame,
+                this::givenMatchWithPlayersAtDeuce_whenPlayer1WinsPoints_thenPlayer1HasAdvantage,
+                this::givenMatchWithPlayersAtDeuceAndPlayer1HasAdvantage_whenPlayer1WinsPoints_thenPlayer1WinsGame,
+                this::givenMatchWithPlayersAtDeuceAndPlayer1HasAdvantage_whenPlayer2WinsPoints_thenPlayer1LosesAdvantage,
+                this::givenMatchWithPlayersAtDeuceAndPlayer1HasAdvantage_whenPlayer2WinsPoints_thenPlayer2HasNoAdvantage
+        );
+    }
+
+    @Test
     void givenMatchWithPlayersAtDeuce_whenPlayer1WinsPoints_thenPlayer1DoesNotWinGame() {
         match.getPlayer1Score().setPoints(40);
         match.getPlayer2Score().setPoints(40);
@@ -85,7 +96,7 @@ public class MatchScoreCalculationServiceTest {
     }
 
     @Test
-    void givenMatchWithPlayersAtDeuceAndPlayer1WithAdvantage_whenPlayer2WinsPoints_thenPlayer2HasNoAdvantage() {
+    void givenMatchWithPlayersAtDeuceAndPlayer1HasAdvantage_whenPlayer2WinsPoints_thenPlayer2HasNoAdvantage() {
         match.getPlayer1Score().setPoints(40);
         match.getPlayer2Score().setPoints(40);
         match.getPlayer1Score().setAdvantage(true);
