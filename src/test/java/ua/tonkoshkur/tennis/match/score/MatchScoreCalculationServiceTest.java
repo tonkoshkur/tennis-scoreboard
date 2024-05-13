@@ -128,6 +128,14 @@ public class MatchScoreCalculationServiceTest {
     }
 
     @Test
+    void testPlayer1WinsSet() {
+        Assertions.assertAll(
+                this::givenMatchWithPlayer1Has1Sets_whenPlayer1WinsSet_thenPlayer1WinsMatch,
+                this::givenMatchWithPlayersHave1Sets_whenPlayer1WinsSet_thenMatchIsNotFinished
+        );
+    }
+
+    @Test
     void givenMatchWithPlayer1Has1Sets_whenPlayer1WinsSet_thenPlayer1WinsMatch() {
         match.getPlayer1Score().setPoints(40);
         match.getPlayer1Score().setGames(5);
