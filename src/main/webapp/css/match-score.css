@@ -10,7 +10,7 @@
     color: white;
     display: grid;
     gap: 5px;
-    grid-template-columns: minmax(190px, 15vw) repeat(4, 50px);
+    grid-template-columns: minmax(220px, 15vw) repeat(4, 50px);
     grid-template-rows: 25px repeat(2, 50px);
     justify-items: center;
 }
