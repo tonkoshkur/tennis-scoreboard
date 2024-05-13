@@ -18,7 +18,7 @@ import java.util.UUID;
 @WebServlet("/new-match")
 public class NewMatchController extends HttpServlet {
 
-    private static final String NEW_MATCH_PAGE = "jsp/new-match.jsp";
+    private static final String NEW_MATCH_PAGE = "page/new-match.jsp";
 
     private transient PlayerService playerService;
     private transient OngoingMatchesService ongoingMatchesService;

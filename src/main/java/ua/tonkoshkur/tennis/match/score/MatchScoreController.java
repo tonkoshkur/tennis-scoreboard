@@ -17,7 +17,7 @@ import java.io.IOException;
 @WebServlet("/match-score")
 public class MatchScoreController extends HttpServlet {
 
-    private static final String MATCH_SCORE_PAGE = "jsp/match-score.jsp";
+    private static final String MATCH_SCORE_PAGE = "page/match-score.jsp";
 
     private transient OngoingMatchesService ongoingMatchesService;
     private transient MatchScoreRequestMapper matchScoreRequestMapper;

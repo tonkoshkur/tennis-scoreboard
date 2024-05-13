@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 public class ExceptionHandlingFilter implements Filter {
 
     private static final Logger LOGGER = Logger.getLogger(ExceptionHandlingFilter.class.getName());
-    private static final String ERROR_PAGE = "jsp/error.jsp";
+    private static final String ERROR_PAGE = "page/error.jsp";
     private static final String UNKNOWN_ERROR_MESSAGE = "Oops.. Error occurred. Details: ";
 
     @Override

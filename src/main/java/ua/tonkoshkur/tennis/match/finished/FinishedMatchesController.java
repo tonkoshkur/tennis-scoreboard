@@ -15,7 +15,7 @@ import java.io.IOException;
 @WebServlet("/matches")
 public class FinishedMatchesController extends HttpServlet {
 
-    private static final String MATCHES_PAGE = "jsp/matches.jsp";
+    private static final String MATCHES_PAGE = "page/matches.jsp";
 
     private transient FinishedMatchesService finishedMatchesService;
     private transient FinishedMatchesRequestMapper finishedMatchesRequestMapper;
