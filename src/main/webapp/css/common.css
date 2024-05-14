@@ -52,6 +52,10 @@ button.active {
     background-color: white;
 }
 
+i {
+    color: var(--primary-color);
+}
+
 .content {
     display: flex;
     flex-direction: column;
