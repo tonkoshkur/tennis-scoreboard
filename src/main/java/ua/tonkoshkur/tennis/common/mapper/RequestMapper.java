@@ -1,23 +1,17 @@
 package ua.tonkoshkur.tennis.common.mapper;
 
 import jakarta.servlet.http.HttpServletRequest;
-import ua.tonkoshkur.tennis.common.exception.BadRequestException;
 
 import java.util.Optional;
 import java.util.function.Function;
 
 public interface RequestMapper<T> {
-    T map(HttpServletRequest request) throws BadRequestException;
+    T map(HttpServletRequest request);
 
-    default <R> R mapParam(HttpServletRequest request, String name, Function<String, R> mapper)
-            throws BadRequestException {
-
+    default <R> R mapParamOrGetNull(HttpServletRequest request, String name, Function<String, R> mapper) {
         String value = request.getParameter(name);
-        if (value == null) {
-            throw new BadRequestException(String.format("Missed %s value", name));
-        }
         return mapParamValue(value, mapper)
-                .orElseThrow(() -> new BadRequestException(String.format("Invalid %s value", name)));
+                .orElse(null);
     }
 
     default <R> R mapParamOrDefault(HttpServletRequest request, String name, Function<String, R> mapper, R defaultValue) {

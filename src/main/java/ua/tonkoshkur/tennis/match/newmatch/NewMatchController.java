@@ -19,17 +19,22 @@ import java.util.UUID;
 public class NewMatchController extends HttpServlet {
 
     private static final String NEW_MATCH_PAGE = "page/new-match.jsp";
+    private static final String PLAYER_1_PARAM = "player1";
+    private static final String PLAYER_2_PARAM = "player2";
+    private static final String PLAYER_NAME_REGEX = "^[a-zA-Z0-9]*\\s?[a-zA-Z0-9]+$";
 
     private transient PlayerService playerService;
     private transient OngoingMatchesService ongoingMatchesService;
     private transient NewMatchRequestMapper newMatchRequestMapper;
+    private transient NewMatchRequestValidator newMatchRequestValidator;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         ServletContext context = config.getServletContext();
         playerService = (PlayerService) context.getAttribute(PlayerService.class.getSimpleName());
         ongoingMatchesService = (OngoingMatchesService) context.getAttribute(OngoingMatchesService.class.getSimpleName());
-        newMatchRequestMapper = new NewMatchRequestMapper();
+        newMatchRequestMapper = new NewMatchRequestMapper(PLAYER_1_PARAM, PLAYER_2_PARAM);
+        newMatchRequestValidator = new NewMatchRequestValidator(PLAYER_NAME_REGEX, PLAYER_1_PARAM, PLAYER_2_PARAM);
     }
 
     @Override
@@ -43,17 +48,19 @@ public class NewMatchController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            NewMatchRequest newMatchRequest = newMatchRequestMapper.map(request);
-
-            PlayerDto player1 = playerService.createOrFindByName(newMatchRequest.player1());
-            PlayerDto player2 = playerService.createOrFindByName(newMatchRequest.player2());
-
-            UUID uuid = ongoingMatchesService.createForPlayers(player1, player2);
-
-            redirectToMatchScore(request, response, uuid);
-        } catch (BadRequestException exception) {
-            handleError(request, response, exception.getMessage());
+            newMatchRequestValidator.validate(request);
+        } catch (BadRequestException e) {
+            handleNewMatchRequestException(request, response, e.getMessage());
+            return;
         }
+
+        NewMatchRequest newMatchRequest = newMatchRequestMapper.map(request);
+
+        PlayerDto player1 = playerService.createOrFindByName(newMatchRequest.player1());
+        PlayerDto player2 = playerService.createOrFindByName(newMatchRequest.player2());
+        UUID uuid = ongoingMatchesService.createForPlayers(player1, player2);
+
+        redirectToMatchScore(request, response, uuid);
     }
 
     private void redirectToMatchScore(HttpServletRequest request, HttpServletResponse response, UUID uuid)
@@ -62,7 +69,7 @@ public class NewMatchController extends HttpServlet {
         response.sendRedirect(url);
     }
 
-    private void handleError(HttpServletRequest request, HttpServletResponse response, String message)
+    private void handleNewMatchRequestException(HttpServletRequest request, HttpServletResponse response, String message)
             throws ServletException, IOException {
         request.setAttribute("error", message);
         request.getRequestDispatcher(NEW_MATCH_PAGE)
