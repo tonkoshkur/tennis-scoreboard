@@ -27,9 +27,12 @@
         <input class="m-10"
                id="filter_by_player_name"
                name="filter_by_player_name"
-               type="search"
+               type="text"
                value="${playerName}"/>
-        <button type="submit">Search</button>
+        <a href="matches" title="Clear">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </a>
+        <button class="m-10" type="submit">Search</button>
     </form>
 
     <h2 id="table-title">Matches</h2>
