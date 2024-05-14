@@ -1,4 +1,7 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<c:set var="totalPages" value="${matchesPage.totalPages}"/>
+<c:set var="currentPage" value="${matchesPage.number + 1}"/>
+<c:set var="currentPageMaxAdjacent" value="2"/>
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
@@ -55,18 +58,29 @@
 
     <br/>
 
-    <c:if test="${matchesPage.totalPages > 1}">
+    <c:if test="${totalPages > 1}">
         <div class="flex-centered">
-            <c:forEach begin="0" end="${matchesPage.totalPages-1}" var="pageNumber">
-                <form>
-                    <button class="${matchesPage.number == pageNumber ? "active" : ""}"
-                            type="submit"
-                            id="page"
-                            name="page"
-                            value="${pageNumber}">
-                        <c:out value="${pageNumber+1}"/>
-                    </button>
-                </form>
+            <c:forEach begin="1" end="${totalPages}" var="page">
+
+                <c:if test="${page == 1 || page == totalPages
+                || (currentPage - currentPageMaxAdjacent < page && currentPage + currentPageMaxAdjacent > page)}">
+                    <form>
+                        <input name="filter_by_player_name" type="hidden" value="${playerName}"/>
+                        <button class="${currentPage == page ? "active" : ""}"
+                                type="submit"
+                                id="page"
+                                name="page"
+                                value="${page - 1}">
+                            <c:out value="${page}"/>
+                        </button>
+                    </form>
+                </c:if>
+
+                <c:if test="${(page > 1 && page == currentPage - currentPageMaxAdjacent)
+                || (page < totalPages && page == currentPage + currentPageMaxAdjacent)}">
+                    <div>...</div>
+                </c:if>
+
             </c:forEach>
         </div>
     </c:if>
