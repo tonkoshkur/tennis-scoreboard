@@ -3,24 +3,88 @@ insert into Players values (default, UPPER('Andre Agassi'));
 insert into Players values (default, UPPER('Juan Aguilera'));
 insert into Players values (default, UPPER('Betsy Abbas'));
 insert into Players values (default, UPPER('Sabine Appelmans'));
+insert into Players values (default, UPPER('Novak Djokovic'));
+insert into Players values (default, UPPER('Jannik Sinner'));
+insert into Players values (default, UPPER('Carlos Alcaraz'));
+insert into Players values (default, UPPER('Iga Swiatek'));
+insert into Players values (default, UPPER('Aryna Sabalenka'));
 
 insert into Matches values (default, 1, 2, 1);
 insert into Matches values (default, 1, 3, 3);
 insert into Matches values (default, 1, 4, 1);
 insert into Matches values (default, 1, 5, 5);
+insert into Matches values (default, 1, 6, 1);
+insert into Matches values (default, 1, 7, 7);
+insert into Matches values (default, 1, 8, 1);
+insert into Matches values (default, 1, 9, 9);
+insert into Matches values (default, 1, 10, 1);
+
 insert into Matches values (default, 2, 1, 2);
 insert into Matches values (default, 2, 3, 3);
 insert into Matches values (default, 2, 4, 2);
 insert into Matches values (default, 2, 5, 5);
+insert into Matches values (default, 2, 6, 2);
+insert into Matches values (default, 2, 7, 7);
+insert into Matches values (default, 2, 8, 2);
+insert into Matches values (default, 2, 9, 9);
+insert into Matches values (default, 2, 10, 2);
+
 insert into Matches values (default, 3, 1, 1);
 insert into Matches values (default, 3, 2, 2);
 insert into Matches values (default, 3, 4, 3);
 insert into Matches values (default, 3, 5, 5);
+insert into Matches values (default, 3, 6, 3);
+insert into Matches values (default, 3, 7, 7);
+insert into Matches values (default, 3, 8, 3);
+insert into Matches values (default, 3, 9, 9);
+insert into Matches values (default, 3, 10, 3);
+
 insert into Matches values (default, 4, 1, 4);
 insert into Matches values (default, 4, 2, 4);
 insert into Matches values (default, 4, 3, 4);
 insert into Matches values (default, 4, 5, 5);
+insert into Matches values (default, 4, 6, 4);
+insert into Matches values (default, 4, 7, 7);
+insert into Matches values (default, 4, 8, 4);
+insert into Matches values (default, 4, 9, 9);
+insert into Matches values (default, 4, 10, 4);
+
 insert into Matches values (default, 5, 1, 1);
 insert into Matches values (default, 5, 2, 2);
 insert into Matches values (default, 5, 3, 3);
 insert into Matches values (default, 5, 4, 4);
+insert into Matches values (default, 5, 6, 5);
+insert into Matches values (default, 5, 7, 7);
+insert into Matches values (default, 5, 8, 5);
+insert into Matches values (default, 5, 9, 9);
+insert into Matches values (default, 5, 10, 5);
+
+insert into Matches values (default, 6, 1, 1);
+insert into Matches values (default, 6, 2, 2);
+insert into Matches values (default, 6, 3, 3);
+insert into Matches values (default, 6, 4, 4);
+insert into Matches values (default, 6, 5, 5);
+insert into Matches values (default, 6, 7, 7);
+insert into Matches values (default, 6, 8, 8);
+insert into Matches values (default, 6, 9, 9);
+insert into Matches values (default, 6, 10, 10);
+
+insert into Matches values (default, 7, 1, 7);
+insert into Matches values (default, 7, 2, 7);
+insert into Matches values (default, 7, 3, 7);
+insert into Matches values (default, 7, 4, 7);
+insert into Matches values (default, 7, 5, 7);
+insert into Matches values (default, 7, 6, 7);
+insert into Matches values (default, 7, 8, 7);
+insert into Matches values (default, 7, 9, 7);
+insert into Matches values (default, 7, 10, 7);
+
+insert into Matches values (default, 8, 1, 1);
+insert into Matches values (default, 8, 2, 2);
+insert into Matches values (default, 8, 3, 3);
+insert into Matches values (default, 8, 4, 4);
+insert into Matches values (default, 8, 5, 5);
+insert into Matches values (default, 8, 6, 6);
+insert into Matches values (default, 8, 7, 7);
+insert into Matches values (default, 8, 9, 9);
+insert into Matches values (default, 8, 10, 10);
