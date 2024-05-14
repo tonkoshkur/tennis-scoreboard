@@ -37,9 +37,9 @@
                    required/>
         </div>
         <div class="error">${error}</div>
-        <input class="horizontal-center"
-               type="submit"
-               value="Start"/>
+        <button class="horizontal-center" type="submit">
+            Start
+        </button>
     </form>
 </div>
 </body>
