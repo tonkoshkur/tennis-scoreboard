@@ -6,7 +6,6 @@ import ua.tonkoshkur.tennis.player.PlayerDto;
 public class MatchScoreCalculationServiceImpl implements MatchScoreCalculationService {
 
     private static final int MIN_GAMES_TO_WIN_SET = 6;
-    private static final int MAX_GAMES_TO_WIN_SET = 7;
     private static final int ADVANTAGE_TO_WIN_SET = 2;
 
     private static final int MAX_SETS_TO_WIN_MATCH = 3;
@@ -79,8 +78,7 @@ public class MatchScoreCalculationServiceImpl implements MatchScoreCalculationSe
 
     private boolean isSetOver(int winnerGames, int looserGames) {
         int advantageInGames = winnerGames - looserGames;
-        return winnerGames == MAX_GAMES_TO_WIN_SET
-                || (winnerGames == MIN_GAMES_TO_WIN_SET && advantageInGames >= ADVANTAGE_TO_WIN_SET);
+        return winnerGames >= MIN_GAMES_TO_WIN_SET && advantageInGames >= ADVANTAGE_TO_WIN_SET;
     }
 
     private void finishSet(MatchScoreDto winnerScore, MatchScoreDto looserScore) {
