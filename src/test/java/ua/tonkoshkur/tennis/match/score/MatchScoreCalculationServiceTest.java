@@ -106,10 +106,10 @@ public class MatchScoreCalculationServiceTest {
     }
 
     @Test
-    void givenMatchWithPlayersHave5Games_whenPlayer1WinsGame_thenPlayer1DoesNotWinSet() {
+    void givenMatchWithPlayersHave6Games_whenPlayer1WinsGame_thenPlayer1DoesNotWinSet() {
         match.getPlayer1Score().setPoints(40);
-        match.getPlayer1Score().setGames(5);
-        match.getPlayer2Score().setGames(5);
+        match.getPlayer1Score().setGames(6);
+        match.getPlayer2Score().setGames(6);
 
         matchScoreCalculationService.updateScore(match, player1.getId());
 
